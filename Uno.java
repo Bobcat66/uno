@@ -91,12 +91,14 @@ public class Uno {
             }
             //Computer turn
             while (!playerTurn){
+                System.out.println();
                 boolean playedCard = false;
                 //Tries to play a card
                 for (int i = 0; i < comDeck.size(); i++){
                     UnoCard playCard = comDeck.get(i);
                     if (playCard.getCard().equals(faceUpCard.getCard()) | playCard.getColor().equals(faceUpCard.getColor()) | playCard.getColor().equals(UnoCard.Color.WILD)){
                         faceUpCard = comDeck.remove(i);
+                        System.out.println("Computer played " + faceUpCard);
                         playedCard = true;
                         break;
                     }
@@ -104,6 +106,7 @@ public class Uno {
                 //Draws a card if none are available
                 if (!playedCard){
                     comDeck.add(UnoCard.random());
+                    System.out.println("Computer drew a card!");
                     continue;
                 }
 
@@ -157,6 +160,7 @@ public class Uno {
 
             }
         }
+        System.out.println((playerDeck.size() == 0) ? "The Player Won!" : "The Evil AI Won!");
         input.close();
     }
 }
